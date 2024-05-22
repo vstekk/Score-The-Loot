@@ -3,10 +3,12 @@
 public class Item
 {
     public readonly string Name;
+    public readonly ItemType Type;
     public readonly List<StatModifier> _mods;
 
     public Item(ItemRarity rarity, ItemType type)
     {
+        Type = type;
         Name = ItemNameGenerator.GenerateItemName(rarity, type);
         _mods = ItemModsGenerator.GenerateMods(rarity);
     }

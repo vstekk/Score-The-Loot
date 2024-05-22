@@ -10,4 +10,10 @@ for (int i = 0; i < 5; i++)
     
     item = new Item(rarity, type);
     Console.WriteLine(item.DisplayString());
+    
+    player.EquipItem(item);
 }
+Console.WriteLine($"Score: {player.Score.Value}");
+
+Console.WriteLine($"Items: {string.Join("",player.Items.Select(x => x.Value.DisplayString()))}");
+
