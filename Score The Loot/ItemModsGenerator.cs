@@ -1,4 +1,5 @@
 ﻿using System.Security.Cryptography;
+using Score_The_Loot;
 
 public static class ItemModsGenerator
 {
@@ -42,30 +43,16 @@ public static class ItemModsGenerator
     {
         var mods = new List<StatModifier>();
 
-        switch (rarity)
-        {
-            case ItemRarity.Normal:
-                mods.Add(GenerateMod(rarity));
-                break;
-            case ItemRarity.Magic:
-                mods.Add(GenerateMod(rarity));
-                break;
-            case ItemRarity.Rare:
-                mods.Add(GenerateMod(rarity));
-                break;
-            case ItemRarity.Cursed:
-                mods.Add(GenerateMod(rarity));
-                mods.Add(GenerateMod(rarity, true));
-                break;
-                
-        }
+        mods.Add(GenerateMod(rarity));
+        if (rarity == ItemRarity.Cursed)
+            mods.Add(GenerateMod(rarity, true));
         
         return mods;
     }
 
     private static StatModifier GenerateMod(ItemRarity rarity, bool cursed = false)
     {
-        var modType = GetRandomModType();
+        var modType = EnumUtils.GetRandomValue<StatModType>(); //GetRandomModType();
         var range = Ranges[modType][rarity];
         var value = GetRandomValue(range.Min, range.Max);
         if (cursed) value *= -1;
@@ -80,4 +67,6 @@ public static class ItemModsGenerator
         var values = Enum.GetValues<StatModType>();
         return (StatModType) (values.GetValue(random.Next(values.Length)) ?? StatModType.Additive);
     }
+    
+    
 }

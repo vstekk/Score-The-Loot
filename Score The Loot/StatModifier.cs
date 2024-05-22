@@ -2,6 +2,7 @@
 {
     public readonly int Value;
     public readonly StatModType Type;
+    public string DisplayString => ModTypeFormatting.ToString(this);
 
     public StatModifier(int value, StatModType type)
     {

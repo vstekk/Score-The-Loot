@@ -1,9 +1,13 @@
-﻿
-Console.WriteLine("Hello, World!");
-
-var item = new Item(ItemRarity.Normal, ItemType.Head);
+﻿using Score_The_Loot;
 
 var player = new Player(0);
-Console.WriteLine(player.Score.Value);
-player.Score.AddModifier(item._mods[0]);
-Console.WriteLine(player.Score.Value);
+Item item;
+
+for (int i = 0; i < 5; i++)
+{
+    var type = EnumUtils.GetRandomValue<ItemType>();
+    var rarity = EnumUtils.GetRandomValue<ItemRarity>();
+    
+    item = new Item(rarity, type);
+    Console.WriteLine(item.DisplayString());
+}
