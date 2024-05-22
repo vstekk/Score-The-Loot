@@ -42,10 +42,17 @@ public static class ItemModsGenerator
     public static List<StatModifier> GenerateMods(ItemRarity rarity)
     {
         var mods = new List<StatModifier>();
-
         mods.Add(GenerateMod(rarity));
+        
         if (rarity == ItemRarity.Cursed)
-            mods.Add(GenerateMod(rarity, true));
+        {
+            StatModifier cursedMod;
+            do
+            {
+                cursedMod = GenerateMod(rarity, true);
+            } while (mods.Any(x => x.Type == cursedMod.Type));
+            mods.Add(cursedMod);
+        }
         
         return mods;
     }
