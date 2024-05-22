@@ -3,9 +3,8 @@ using System.Threading.Channels;
 using Score_The_Loot;
 
 Leaderboard leaderboard = LeaderboardManager.LoadScores();
-
 MainMenu();
-
+LeaderboardManager.SaveLeaderboard(leaderboard);
 
 void MainMenu()
 {
@@ -38,7 +37,6 @@ void MainMenu()
         
     } while (key != ConsoleKey.Backspace);
 
-    LeaderboardManager.SaveLeaderboard(leaderboard);
     Console.Clear();
     Console.WriteLine("EXITING");
 }
