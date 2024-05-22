@@ -1,5 +1,4 @@
 ﻿using System.Text;
-using System.Threading.Channels;
 using Score_The_Loot;
 
 Leaderboard leaderboard = LeaderboardManager.LoadScores();

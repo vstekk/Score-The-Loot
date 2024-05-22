@@ -18,6 +18,6 @@ public static class LeaderboardManager
         }
 
         string jsonString = File.ReadAllText(FilePath);
-        return JsonSerializer.Deserialize<Leaderboard>(jsonString);
+        return JsonSerializer.Deserialize<Leaderboard>(jsonString) ?? new Leaderboard();
     }
 }

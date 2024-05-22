@@ -26,9 +26,9 @@ public class Leaderboard
         else
         {
             sb.AppendLine("ABSOLUTE MAXIMUM:");
-            sb.AppendLine($"{_records.MaxBy(x => x.Score).ToString()}");
+            sb.AppendLine($"{_records.MaxBy(x => x.Score)?.ToString()}");
             sb.AppendLine("ABSOLUTE MINIMUM:");
-            sb.AppendLine($"{_records.MinBy(x => x.Score).ToString()}");
+            sb.AppendLine($"{_records.MinBy(x => x.Score)?.ToString()}");
         }
         
         return sb.ToString();
