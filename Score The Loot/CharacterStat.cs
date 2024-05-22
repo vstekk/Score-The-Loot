@@ -48,7 +48,7 @@
             finalValue *= (1 + (float)mod.Value / 100);
         }
 
-        Console.WriteLine($"({flat} * {additive}) * {String.Join(" *", statModifiers.Where(x => x.Type == StatModType.Multiplicative).Select(x => (1 + (float)(x.Value / 100))))}");
+        // Console.WriteLine($"({flat} * {additive}) * {String.Join(" *", statModifiers.Where(x => x.Type == StatModType.Multiplicative).Select(x => (1 + (float)(x.Value / 100))))}");
         return MathF.Round(finalValue, 2,MidpointRounding.AwayFromZero);
     }
 }

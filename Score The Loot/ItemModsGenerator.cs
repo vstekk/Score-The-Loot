@@ -10,46 +10,45 @@ public static class ItemModsGenerator
         {
             StatModType.Flat, new Dictionary<ItemRarity, (int Min, int Max)>
             {
-                { ItemRarity.Normal, (1, 10) },
-                { ItemRarity.Magic, (5, 15) },
-                { ItemRarity.Rare, (10, 20) },
-                { ItemRarity.Cursed, (10, 30) }
+                { ItemRarity.Basic, (5, 15) },
+                { ItemRarity.Magical, (10, 20) },
+                { ItemRarity.Rare, (15, 25) },
+                { ItemRarity.Cursed, (25, 40) }
             }
         },
         {
             StatModType.Additive, new Dictionary<ItemRarity, (int Min, int Max)>
             {
-                { ItemRarity.Normal, (10, 20) },
-                { ItemRarity.Magic, (10, 30) },
-                { ItemRarity.Rare, (20, 50) },
-                { ItemRarity.Cursed, (30, 60) }
+                { ItemRarity.Basic, (10, 50) },
+                { ItemRarity.Magical, (30, 80) },
+                { ItemRarity.Rare, (50, 120) },
+                { ItemRarity.Cursed, (80, 160) }
             }
         },
         {
             StatModType.Multiplicative, new Dictionary<ItemRarity, (int Min, int Max)>
             {
-                { ItemRarity.Normal, (2, 5) },
-                { ItemRarity.Magic, (3, 8) },
-                { ItemRarity.Rare, (5, 12) },
-                { ItemRarity.Cursed, (10, 20) }
+                { ItemRarity.Basic, (10, 30) },
+                { ItemRarity.Magical, (15, 45) },
+                { ItemRarity.Rare, (30, 60) },
+                { ItemRarity.Cursed, (50, 90) }
             }
         }
     };
 
     #endregion
     
-    private static Random random = new ();
-    public static List<StatModifier> GenerateMods(ItemRarity rarity)
+    public static List<StatModifier> GenerateMods(Random random, ItemRarity rarity)
     {
         var mods = new List<StatModifier>();
-        mods.Add(GenerateMod(rarity));
+        mods.Add(GenerateMod(random, rarity));
         
         if (rarity == ItemRarity.Cursed)
         {
             StatModifier cursedMod;
             do
             {
-                cursedMod = GenerateMod(rarity, true);
+                cursedMod = GenerateMod(random, rarity, true);
             } while (mods.Any(x => x.Type == cursedMod.Type));
             mods.Add(cursedMod);
         }
@@ -57,23 +56,17 @@ public static class ItemModsGenerator
         return mods;
     }
 
-    private static StatModifier GenerateMod(ItemRarity rarity, bool cursed = false)
+    private static StatModifier GenerateMod(Random random, ItemRarity rarity, bool cursed = false)
     {
         var modType = EnumUtils.GetRandomValue<StatModType>(); //GetRandomModType();
         var range = Ranges[modType][rarity];
-        var value = GetRandomValue(range.Min, range.Max);
+        var value = GetRandomValue(random, range.Min, range.Max);
         if (cursed) value *= -1;
         
         return new StatModifier(value, modType);
     }
     
-    private static int GetRandomValue(int min, int max) => random.Next(min, max); 
-    
-    private static StatModType GetRandomModType()
-    {
-        var values = Enum.GetValues<StatModType>();
-        return (StatModType) (values.GetValue(random.Next(values.Length)) ?? StatModType.Additive);
-    }
+    private static int GetRandomValue(Random random, int min, int max) => random.Next(min, max); 
     
     
 }

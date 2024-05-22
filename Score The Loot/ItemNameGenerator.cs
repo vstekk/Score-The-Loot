@@ -4,9 +4,9 @@
 
     private static readonly Dictionary<ItemRarity, List<string>> ItemRarityAdjectives = new()
     {
-        { ItemRarity.Normal, new List<string> 
+        { ItemRarity.Basic, new List<string> 
             { "Common", "Plain", "Basic", "Simple", "Standard", "Ordinary", "Usual", "Regular", "Everyday", "Normal", "Routine", "Typical" } },
-        { ItemRarity.Magic, new List<string> 
+        { ItemRarity.Magical, new List<string> 
             { "Enchanted", "Mystic", "Arcane", "Magical", "Charmed", "Bewitched", "Sorcerous", "Wizardly", "Spellbound", "Otherworldly", "Fabled", "Mystical" } },
         { ItemRarity.Rare, new List<string> 
             { "Exquisite", "Grand", "Elegant", "Precious", "Valuable", "Rare", "Unique", "Uncommon", "Exceptional", "Extraordinary", "Special", "Distinctive" } },
@@ -16,15 +16,15 @@
 
     private static readonly Dictionary<ItemType, List<string>> ItemTypeNames = new()
     {
-        { ItemType.Head, new List<string> 
+        { ItemType.Hat, new List<string> 
             { "Helmet", "Cap", "Hood", "Cowl", "Hat", "Headgear", "Helm", "Mask", "Crown", "Tiara", "Visor", "Headdress" } },
-        { ItemType.Chest, new List<string> 
+        { ItemType.Top, new List<string> 
             { "Armor", "Vest", "Robe", "Chestplate", "Jerkin", "Tunic", "Tabard", "Brigandine", "Cuirass", "Breastplate", "Gambeson", "Doublet" } },
-        { ItemType.Hands, new List<string> 
+        { ItemType.Gloves, new List<string> 
             { "Gloves", "Gauntlets", "Bracers", "Mitts", "Handwraps", "Fistguards", "Handguards", "Vambraces", "Claws", "Grips", "Paw", "Talons" } },
-        { ItemType.Legs, new List<string> 
+        { ItemType.Bottoms, new List<string> 
             { "Pants", "Leggings", "Greaves", "Breeches", "Trousers", "Hose", "Chaps", "Kilt", "Cuisses", "Skirt", "Legguards", "Shinguards" } },
-        { ItemType.Feet, new List<string> 
+        { ItemType.Footwear, new List<string> 
             { "Boots", "Shoes", "Sandals", "Footwear", "Slippers", "Sabatons", "Moccasins", "Greaves", "Socks", "Spats", "Footwraps", "Clogs" } }
     };
 

@@ -1,43 +1,60 @@
 ﻿using System.Text;
+using Score_The_Loot;
 
 public class Item
 {
     public readonly string Name;
     public readonly ItemType Type;
-    public readonly List<StatModifier> _mods;
+    public readonly ItemRarity Rarity;
+    public readonly List<StatModifier> Mods;
 
-    public Item(ItemRarity rarity, ItemType type)
+    public Item(Random random, int round = 0)
     {
-        Type = type;
-        Name = ItemNameGenerator.GenerateItemName(rarity, type);
-        _mods = ItemModsGenerator.GenerateMods(rarity);
+        Type = EnumUtils.GetRandomValue<ItemType>();
+        Rarity = RollRarity(random, round);
+        Name = ItemNameGenerator.GenerateItemName(Rarity, Type);
+        Mods = ItemModsGenerator.GenerateMods(random, Rarity);
+    }
+
+    private ItemRarity RollRarity(Random random, int round = 0)
+    {
+        var roll = random.Next(0, 100);
+        if (roll < 10 + round * 3) return ItemRarity.Cursed;
+        if (roll < 20 + round * 3) return ItemRarity.Rare;
+        if (roll < 40 + round * 3) return ItemRarity.Magical;
+        
+        return ItemRarity.Basic;
     }
 
     public string DisplayString()
     {
         var sb = new StringBuilder();
-
+        
         sb.AppendLine(Name);
-        foreach (var mod in _mods)
+        sb.AppendLine($"({Rarity} {Type})");
+        sb.AppendLine("---");
+        foreach (var mod in Mods)
         {
             sb.AppendLine(mod.DisplayString);
         }
+
+        sb.AppendLine("===");
         return sb.ToString();
     }
 }
 
 public enum ItemRarity
 {
-    Normal,
-    Magic,
+    Basic,
+    Magical,
     Rare,
     Cursed
 }
 public enum ItemType
 {
-    Head,
-    Chest,
-    Hands,
-    Legs,
-    Feet
+    Hat,
+    Top,
+    Gloves,
+    Bottoms,
+    Footwear
 }
