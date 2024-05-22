@@ -69,11 +69,11 @@ public static class ItemModsGenerator
         var range = Ranges[modType][rarity];
         var value = GetRandomValue(range.Min, range.Max);
         if (cursed) value *= -1;
-
+        
         return new StatModifier(value, modType);
     }
     
-    private static int GetRandomValue(int min, int max) => random.Next() * (max - min) + min; 
+    private static int GetRandomValue(int min, int max) => random.Next(min, max); 
     
     private static StatModType GetRandomModType()
     {
