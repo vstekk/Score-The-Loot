@@ -10,7 +10,7 @@ public class Item
 
     public Item(Random random, int round = 0)
     {
-        Type = EnumUtils.GetRandomValue<ItemType>();
+        Type = Utils.GetRandomValue<ItemType>();
         Rarity = RollRarity(random, round);
         Name = ItemNameGenerator.GenerateItemName(Rarity, Type);
         Mods = ItemModsGenerator.GenerateMods(random, Rarity);

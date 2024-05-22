@@ -58,7 +58,7 @@ public static class ItemModsGenerator
 
     private static StatModifier GenerateMod(Random random, ItemRarity rarity, bool cursed = false)
     {
-        var modType = EnumUtils.GetRandomValue<StatModType>(); //GetRandomModType();
+        var modType = Utils.GetRandomValue<StatModType>(); //GetRandomModType();
         var range = Ranges[modType][rarity];
         var value = GetRandomValue(random, range.Min, range.Max);
         if (cursed) value *= -1;

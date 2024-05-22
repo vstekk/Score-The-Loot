@@ -1,6 +1,6 @@
 ﻿namespace Score_The_Loot;
 
-public static class EnumUtils
+public static class Utils
 {
     private static Random random = new();
     

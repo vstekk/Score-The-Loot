@@ -4,14 +4,16 @@ namespace Score_The_Loot;
 
 public class Game
 {
+    private Leaderboard _leaderboard;
     private readonly int _rounds;
     private readonly int _lootAmount;
     private Random _rand;
     private Player _player;
     
-    public Game(int rounds = 10, int baseScore = 0, int lootAmount = 3)
+    public Game(Leaderboard leaderboard, int rounds = 10, int baseScore = 0, int lootAmount = 3)
     {
         _rand = new Random();
+        _leaderboard = leaderboard;
         _rounds = rounds;
         _lootAmount = lootAmount;
         _player = new Player(baseScore);
@@ -23,21 +25,40 @@ public class Game
         {
             PlayRound(i + 1);
         }
+        
+        EndGame();
+    }
 
+    private void EndGame()
+    {
+        Console.Clear();
+        
         var sb = new StringBuilder();
         sb.AppendLine($"Score: {_player.Score.Value}");
-        sb.AppendLine("Items:");
+        sb.AppendLine("Your Inventory:");
         sb.AppendLine();
         sb.AppendLine(_player.GetEquipmentString());
-
+        sb.AppendLine("ENTER to Continue");
         Console.WriteLine(sb.ToString());
+        do
+        {
+        } while (Console.ReadKey(true).Key != ConsoleKey.Enter);
+        Console.Clear();
         
+        Console.WriteLine("Enter your Name and press ENTER");
+        var name = Console.ReadLine();
+        if (!string.IsNullOrEmpty(name))
+        {
+            _leaderboard.AddScore(name, _player.Score.Value);
+        }
+
     }
 
     private void PlayRound(int currentRound)
     {
+        Console.Clear();
+        
         var itemsOnOffer = new Dictionary<int, Item>();
-
         for (int i = 0; i < _lootAmount; i++)
         {
             itemsOnOffer.Add(i + 1, new Item(_rand));
@@ -54,7 +75,8 @@ public class Game
         }
 
         sb.AppendLine();
-        sb.AppendLine("Select Item by pressing 1 to 3 or see your items by pressing TAB.");
+        sb.AppendLine("1/2/3 to select Item");
+        sb.AppendLine("TAB to show Inventory");
         Console.WriteLine(sb.ToString());
 
         ConsoleKey key;
