@@ -10,9 +10,12 @@ void MainMenu()
     Console.Clear();
     
     var sb = new StringBuilder();
-    sb.AppendLine("ENTER to Start");
-    sb.AppendLine("TAB to Leaderboard");
-    sb.AppendLine("BACKSPACE to Exit");
+    sb.AppendLine("                     SCORE THE LOOT");
+    sb.AppendLine("carefully select items to achieve highest (or lowest) score");
+    sb.AppendLine();
+    sb.AppendLine("                     ENTER to Start");
+    sb.AppendLine("                   TAB to Leaderboard");
+    sb.AppendLine("                    BACKSPACE to Exit");
     Console.WriteLine(sb.ToString());
     
     ConsoleKey key;
