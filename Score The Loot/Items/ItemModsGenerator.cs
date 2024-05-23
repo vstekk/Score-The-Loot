@@ -11,7 +11,7 @@ public static class ItemModsGenerator
             StatModType.Flat, new Dictionary<ItemRarity, (int Min, int Max)>
             {
                 { ItemRarity.Basic, (5, 15) },
-                { ItemRarity.Magical, (10, 20) },
+                { ItemRarity.Magic, (10, 20) },
                 { ItemRarity.Rare, (15, 25) },
                 { ItemRarity.Cursed, (25, 40) }
             }
@@ -20,7 +20,7 @@ public static class ItemModsGenerator
             StatModType.Additive, new Dictionary<ItemRarity, (int Min, int Max)>
             {
                 { ItemRarity.Basic, (10, 50) },
-                { ItemRarity.Magical, (30, 80) },
+                { ItemRarity.Magic, (30, 80) },
                 { ItemRarity.Rare, (50, 120) },
                 { ItemRarity.Cursed, (80, 160) }
             }
@@ -29,7 +29,7 @@ public static class ItemModsGenerator
             StatModType.Multiplicative, new Dictionary<ItemRarity, (int Min, int Max)>
             {
                 { ItemRarity.Basic, (10, 30) },
-                { ItemRarity.Magical, (15, 45) },
+                { ItemRarity.Magic, (15, 45) },
                 { ItemRarity.Rare, (30, 60) },
                 { ItemRarity.Cursed, (50, 90) }
             }

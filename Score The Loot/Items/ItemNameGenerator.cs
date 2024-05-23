@@ -5,11 +5,11 @@
     private static readonly Dictionary<ItemRarity, List<string>> ItemRarityAdjectives = new()
     {
         { ItemRarity.Basic, new List<string> 
-            { "Common", "Plain", "Basic", "Simple", "Standard", "Ordinary", "Usual", "Regular", "Everyday", "Normal", "Routine", "Typical" } },
-        { ItemRarity.Magical, new List<string> 
-            { "Enchanted", "Mystic", "Arcane", "Magical", "Charmed", "Bewitched", "Sorcerous", "Wizardly", "Spellbound", "Otherworldly", "Fabled", "Mystical" } },
+            { "Common", "Plain", "Rough", "Simple", "Standard", "Ordinary", "Usual", "Regular", "Everyday", "Normal", "Dirty", "Smelly" } },
+        { ItemRarity.Magic, new List<string> 
+            { "Enchanted", "Mystic", "Arcane", "Magical", "Charmed", "Bewitched", "Sorcerous", "Wizardly", "Spellbound", "Otherworldly", "Uncommon", "Mystical" } },
         { ItemRarity.Rare, new List<string> 
-            { "Exquisite", "Grand", "Elegant", "Precious", "Valuable", "Rare", "Unique", "Uncommon", "Exceptional", "Extraordinary", "Special", "Distinctive" } },
+            { "Exquisite", "Grand", "Elegant", "Precious", "Valuable", "Legendary", "Unique", "Fabled", "Exceptional", "Extraordinary", "Special", "Distinctive" } },
         { ItemRarity.Cursed, new List<string> 
             { "Cursed", "Haunted", "Accursed", "Hexed", "Damned", "Malevolent", "Eerie", "Sinister", "Ominous", "Baleful", "Unholy", "Blighted" } }
     };

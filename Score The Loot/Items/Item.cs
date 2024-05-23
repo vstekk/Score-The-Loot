@@ -21,7 +21,7 @@ public class Item
         var roll = random.Next(0, 100);
         if (roll < 10 + round * 3) return ItemRarity.Cursed;
         if (roll < 20 + round * 3) return ItemRarity.Rare;
-        if (roll < 40 + round * 3) return ItemRarity.Magical;
+        if (roll < 40 + round * 3) return ItemRarity.Magic;
         
         return ItemRarity.Basic;
     }
@@ -46,7 +46,7 @@ public class Item
 public enum ItemRarity
 {
     Basic,
-    Magical,
+    Magic,
     Rare,
     Cursed
 }
