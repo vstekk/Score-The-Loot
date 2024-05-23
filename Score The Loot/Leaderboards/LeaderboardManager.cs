@@ -20,7 +20,7 @@ public static class LeaderboardManager
         string jsonString = File.ReadAllText(FilePath);
         var records = JsonSerializer.Deserialize<ScoreRecord[]>(jsonString);
         
-        return new Leaderboard(records);
+        return records != null ? new Leaderboard(records) : new Leaderboard();
         
     }
 }
