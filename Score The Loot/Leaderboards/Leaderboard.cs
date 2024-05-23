@@ -3,11 +3,16 @@ using System.Text.Json.Serialization;
 
 public class Leaderboard
 {
+    public IEnumerable<ScoreRecord> Records => _records;
     private List<ScoreRecord> _records;
 
     public Leaderboard()
     {
         _records = new List<ScoreRecord>();
+    }
+    public Leaderboard(IEnumerable<ScoreRecord> records)
+    {
+        _records = records.ToList();
     }
 
     public void AddScore(string playerName, int score)

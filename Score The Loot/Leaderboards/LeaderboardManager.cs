@@ -6,7 +6,7 @@ public static class LeaderboardManager
 
     public static void SaveLeaderboard(Leaderboard leaderboard)
     {
-        string jsonString = JsonSerializer.Serialize(leaderboard);
+        string jsonString = JsonSerializer.Serialize(leaderboard.Records);
         File.WriteAllText(FilePath, jsonString);
     }
 
@@ -18,6 +18,9 @@ public static class LeaderboardManager
         }
 
         string jsonString = File.ReadAllText(FilePath);
-        return JsonSerializer.Deserialize<Leaderboard>(jsonString) ?? new Leaderboard();
+        var records = JsonSerializer.Deserialize<ScoreRecord[]>(jsonString);
+        
+        return new Leaderboard(records);
+        
     }
 }
