@@ -1,6 +1,7 @@
 ﻿using System.Text;
 using Score_The_Loot;
 
+Console.CursorVisible = false;
 Leaderboard leaderboard = LeaderboardManager.LoadScores();
 MainMenu();
 LeaderboardManager.SaveLeaderboard(leaderboard);

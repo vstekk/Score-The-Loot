@@ -120,6 +120,7 @@ public class Game
 
         var sb = new StringBuilder();
         AppendRoundInfo(currentRound, sb);
+        sb.AppendLine("My Items:");
         sb.AppendLine(_player.GetEquipmentString());
         sb.AppendLine("Press TAB to exit.");
         Console.WriteLine(sb.ToString());

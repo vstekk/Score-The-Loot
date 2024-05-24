@@ -10,28 +10,28 @@ public static class ItemModsGenerator
         {
             StatModType.Flat, new Dictionary<ItemRarity, (int Min, int Max)>
             {
-                { ItemRarity.Basic, (5, 15) },
-                { ItemRarity.Magic, (10, 20) },
-                { ItemRarity.Rare, (15, 25) },
-                { ItemRarity.Cursed, (25, 40) }
+                { ItemRarity.Basic, (2, 4) },
+                { ItemRarity.Magic, (5, 9) },
+                { ItemRarity.Rare, (10, 14) },
+                { ItemRarity.Cursed, (15, 20) }
             }
         },
         {
             StatModType.Additive, new Dictionary<ItemRarity, (int Min, int Max)>
             {
-                { ItemRarity.Basic, (10, 50) },
-                { ItemRarity.Magic, (30, 80) },
-                { ItemRarity.Rare, (50, 120) },
-                { ItemRarity.Cursed, (80, 160) }
+                { ItemRarity.Basic, (10, 19) },
+                { ItemRarity.Magic, (20, 29) },
+                { ItemRarity.Rare, (30, 39) },
+                { ItemRarity.Cursed, (40, 50) }
             }
         },
         {
             StatModType.Multiplicative, new Dictionary<ItemRarity, (int Min, int Max)>
             {
-                { ItemRarity.Basic, (10, 30) },
-                { ItemRarity.Magic, (15, 45) },
-                { ItemRarity.Rare, (30, 60) },
-                { ItemRarity.Cursed, (50, 90) }
+                { ItemRarity.Basic, (5, 9) },
+                { ItemRarity.Magic, (10, 14) },
+                { ItemRarity.Rare, (15, 19) },
+                { ItemRarity.Cursed, (20, 25) }
             }
         }
     };
