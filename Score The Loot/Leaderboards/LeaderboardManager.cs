@@ -2,7 +2,7 @@
 
 public static class LeaderboardManager
 {
-    private static readonly string FilePath = "scores.json";
+    private const string FilePath = "scores.json";
 
     public static void SaveLeaderboard(Leaderboard leaderboard)
     {

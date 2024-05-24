@@ -4,11 +4,11 @@ namespace Score_The_Loot;
 
 public class Game
 {
-    private Leaderboard _leaderboard;
+    private readonly Leaderboard _leaderboard;
     private readonly int _rounds;
     private readonly int _lootAmount;
-    private Random _rand;
-    private Player _player;
+    private readonly Random _rand;
+    private readonly Player _player;
     
     public Game(Leaderboard leaderboard, int rounds = 10, int baseScore = 0, int lootAmount = 3)
     {
@@ -64,6 +64,8 @@ public class Game
             itemsOnOffer.Add(i + 1, new Item(_rand));
         }
 
+        //var itemsOnOffer = Enumerable.Range(0, _lootAmount).Select(_ => new Item(_rand)).ToArray();
+
         var sb = new StringBuilder();
         AppendRoundInfo(currentRound, sb);
 
@@ -71,7 +73,6 @@ public class Game
         {
             sb.Append($"{item.Key}. ");
             sb.AppendLine($"{item.Value.DisplayString()}");
-
         }
 
         sb.AppendLine();
@@ -90,14 +91,17 @@ public class Game
                     Console.WriteLine(sb.ToString());
                     break;
                 case ConsoleKey.D1:
+                case ConsoleKey.NumPad1:
                     _player.EquipItem(itemsOnOffer[1]);
                     key = ConsoleKey.Escape;
                     break;
                 case ConsoleKey.D2:
+                case ConsoleKey.NumPad2:
                     _player.EquipItem(itemsOnOffer[2]);
                     key = ConsoleKey.Escape;
                     break;
                 case ConsoleKey.D3:
+                case ConsoleKey.NumPad3:
                     _player.EquipItem(itemsOnOffer[3]);
                     key = ConsoleKey.Escape;
                     break;
